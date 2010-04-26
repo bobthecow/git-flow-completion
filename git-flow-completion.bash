@@ -87,7 +87,7 @@ __git_flow_feature ()
 	fi
 
 	case "$subcommand" in
-	finish|publish|track|diff|rebase)
+	finish|publish|diff|rebase)
 		__gitcomp "$(__git_flow_list_features)"
 		return
 		;;

@@ -5,7 +5,7 @@ Bash completion support for [git-flow](http://github.com/nvie/gitflow)
 
 The contained completion routines provide support for completing:
 
- * git-flow init and version
+ * git-flow init, feature, hotfix and release
  * feature, hotfix and release branches
  * remote feature branch names (for `git-flow feature track`)
 
@@ -32,7 +32,7 @@ To achieve git-flow completion nirvana:
 
  3. Edit git-completion.sh and add the following line to the giant $command case in _git:
 
-        flow)        _git_flow ;;
+        flow) _git_flow ;;
 
 
 Requirement 3 will go away as soon as I figure out how to properly (and predictably) hijack

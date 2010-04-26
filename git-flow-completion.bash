@@ -51,7 +51,7 @@
 
 _git_flow ()
 {
-	local subcommands="init feature release hotfix version"
+	local subcommands="init feature release hotfix"
 	local subcommand="$(__git_find_on_cmdline "$subcommands")"
 	if [ -z "$subcommand" ]; then
 		__gitcomp "$subcommands"

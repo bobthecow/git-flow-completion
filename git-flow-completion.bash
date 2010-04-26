@@ -103,12 +103,12 @@ __git_flow_feature ()
 
 __git_flow_list_features ()
 {
-	echo `git flow feature list`
+	git flow feature list  2> /dev/null
 }
 
 __git_flow_list_remote_features ()
 {
-	echo `git branch -r` | grep 'origin/feature/' | awk '{ sub(/^origin\/feature\//, "", $1); print }'
+	git branch -r 2> /dev/null | grep 'origin/feature/' | awk '{ sub(/^origin\/feature\//, "", $1); print }'
 }
 
 __git_flow_release ()
@@ -134,7 +134,7 @@ __git_flow_release ()
 
 __git_flow_list_releases ()
 {
-	echo `git flow release list`
+	git flow release list 2> /dev/null
 }
 
 __git_flow_hotfix ()
@@ -159,5 +159,5 @@ __git_flow_hotfix ()
 
 __git_flow_list_hotfixes ()
 {
-	echo `git flow hotfix list`
+	git flow hotfix list 2> /dev/null
 }

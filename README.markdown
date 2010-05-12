@@ -19,11 +19,11 @@ To achieve git-flow completion nirvana:
 
  1. Install this file. Either:
 
-    a. Place it in a `bash-completion.d` folder:
+    a. Place it in a `bash_completion.d` folder:
 
-       * /etc/bash-completion.d
-       * /usr/local/etc/bash-completion.d
-       * ~/bash-completion.d
+       * /etc/bash_completion.d
+       * /usr/local/etc/bash_completion.d
+       * ~/bash_completion.d
 
     b. Or, copy it somewhere (e.g. ~/.git-flow-completion.sh) and put the following line in
        your .bashrc:

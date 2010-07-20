@@ -161,3 +161,8 @@ __git_flow_list_hotfixes ()
 {
 	git flow hotfix list 2> /dev/null
 }
+
+# temporarily wrap __git_find_on_cmdline() for backwards compatibility
+if [ -z "`type -t __git_find_subcommand`" ]; then
+	alias __git_find_subcommand=__git_find_on_cmdline
+fi

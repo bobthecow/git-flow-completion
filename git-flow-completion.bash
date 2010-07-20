@@ -52,7 +52,7 @@
 _git_flow ()
 {
 	local subcommands="init feature release hotfix"
-	local subcommand="$(__git_find_on_cmdline "$subcommands")"
+	local subcommand="$(__git_find_subcommand "$subcommands")"
 	if [ -z "$subcommand" ]; then
 		__gitcomp "$subcommands"
 		return
@@ -80,7 +80,7 @@ _git_flow ()
 __git_flow_feature ()
 {
 	local subcommands="list start finish publish track diff rebase"
-	local subcommand="$(__git_find_on_cmdline "$subcommands")"
+	local subcommand="$(__git_find_subcommand "$subcommands")"
 	if [ -z "$subcommand" ]; then
 		__gitcomp "$subcommands"
 		return
@@ -114,7 +114,7 @@ __git_flow_list_remote_features ()
 __git_flow_release ()
 {
 	local subcommands="list start finish"
-	local subcommand="$(__git_find_on_cmdline "$subcommands")"
+	local subcommand="$(__git_find_subcommand "$subcommands")"
 	if [ -z "$subcommand" ]; then
 		__gitcomp "$subcommands"
 		return
@@ -140,7 +140,7 @@ __git_flow_list_releases ()
 __git_flow_hotfix ()
 {
 	local subcommands="list start finish"
-	local subcommand="$(__git_find_on_cmdline "$subcommands")"
+	local subcommand="$(__git_find_subcommand "$subcommands")"
 	if [ -z "$subcommand" ]; then
 		__gitcomp "$subcommands"
 		return

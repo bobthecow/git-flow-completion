@@ -30,14 +30,10 @@ To achieve git-flow completion nirvana:
 
            source ~/.git-flow-completion.sh
 
- 3. Edit git-completion.sh and add the following line to the giant $command case in _git:
+ 3. If you are using Git < 1.7.1: Edit git-completion.sh and add the following line to the giant
+    $command case in _git:
 
-        flow) _git_flow ;;
-
-
-Requirement 3 will go away as soon as I figure out how to properly (and predictably) hijack
-the `complete -F` ownership for `git` without breaking regular `git-completion`...
-
+        flow)        _git_flow ;;
 
 
 The Fine Print

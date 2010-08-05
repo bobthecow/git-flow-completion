@@ -99,7 +99,7 @@ __git_flow_feature ()
 
 __git_flow_list_features ()
 {
-	git flow feature list  2> /dev/null
+	git flow feature list 2> /dev/null | tr -d ' |*'
 }
 
 __git_flow_list_remote_features ()

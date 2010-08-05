@@ -75,7 +75,7 @@ _git_flow ()
 
 __git_flow_feature ()
 {
-	local subcommands="list start finish publish track diff rebase"
+	local subcommands="list start finish publish track diff rebase checkout pull"
 	local subcommand="$(__git_find_subcommand "$subcommands")"
 	if [ -z "$subcommand" ]; then
 		__gitcomp "$subcommands"
@@ -83,8 +83,16 @@ __git_flow_feature ()
 	fi
 
 	case "$subcommand" in
-	finish|publish|diff|rebase)
+	pull)
+		__gitcomp "$(__git_remotes)"
+		return
+		;;
+	checkout|finish|diff|rebase)
 		__gitcomp "$(__git_flow_list_features)"
+		return
+		;;
+	publish)
+		__gitcomp "$(comm -23 <(__git_flow_list_features) <(__git_flow_list_remote_features))"
 		return
 		;;
 	track)

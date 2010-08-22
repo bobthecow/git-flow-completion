@@ -244,7 +244,7 @@ __git_flow_version_list ()
   local expl
   declare -a versions
 
-  versions=(${${(f)"$(_call_program versions git flow release list)"}})
+  versions=(${${(f)"$(_call_program versions git flow release list 2> /dev/null | tr -d ' |*')"}})
   __git_command_successful || return
 
   _wanted versions expl 'version' compadd $versions
@@ -267,12 +267,6 @@ __git_remotes () {
   gitdir=$(_call_program gitdir git rev-parse --git-dir 2>/dev/null)
   __git_command_successful || return
 
-#  zparseopts -a opts X+:
-#
-#  if (( !$opts[(I)-X] )); then
-#    descr=remote
-#  fi
-
   remotes=(${${(f)"$(_call_program remotes git config --get-regexp '"^remote\..*\.url$"')"}//#(#b)remote.(*).url */$match[1]})
   __git_command_successful || return
 
@@ -289,7 +283,7 @@ __git_flow_hotfix_list ()
   local expl
   declare -a hotfixes
 
-  hotfixes=(${${(f)"$(_call_program hotfixes git flow hotfix list)"}})
+  hotfixes=(${${(f)"$(_call_program hotfixes git flow hotfix list 2> /dev/null | tr -d ' |*')"}})
   __git_command_successful || return
 
   _wanted hotfixes expl 'hotfix' compadd $hotfixes

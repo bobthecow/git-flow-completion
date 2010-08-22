@@ -243,7 +243,7 @@ __git-flow-feature ()
 
 				(checkout)
 					_arguments \
-						':branch:__git_branch_names'\
+						':branch:__git_flow_feature_list'\
 					;;
 
 				(pull)

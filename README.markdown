@@ -1,7 +1,7 @@
 git-flow-completion
 ===================
 
-Bash completion support for [git-flow](http://github.com/nvie/gitflow)
+Bash and Zsh completion support for [git-flow](http://github.com/nvie/gitflow)
 
 The contained completion routines provide support for completing:
 
@@ -10,8 +10,8 @@ The contained completion routines provide support for completing:
  * remote feature branch names (for `git-flow feature track`)
 
 
-Installation
-------------
+Installation for Bash
+---------------------
 
 To achieve git-flow completion nirvana:
 
@@ -35,24 +35,26 @@ To achieve git-flow completion nirvana:
 
         flow)        _git_flow ;;
 
-Installation for zsh
----------------------
- 
- To achieve git-flow completion nirvana:
- 
-  0. Update your zsh's git-completion module to the newest verion.
-		From here. http://zsh.git.sourceforge.net/git/gitweb.cgi?p=zsh/zsh;a=blob_plain;f=Completion/Unix/Command/_git;hb=HEAD
- 
-  1. Install this file. Either:
- 
-     a. Place it in your .zshrc:
- 
-     b. Or, copy it somewhere (e.g. ~/.git-flow-completion.zsh) and put the following line in
-        your .zshrc:
- 
-            source ~/.git-flow-completion.zsh
 
-	  c. Or, use this file as a oh-my-zsh plugin.
+Installation for Zsh
+--------------------
+
+To achieve git-flow completion nirvana:
+
+ 0. Update your zsh's git-completion module to the newest verion --
+    [available here](http://zsh.git.sourceforge.net/git/gitweb.cgi?p=zsh/zsh;a=blob_plain;f=Completion/Unix/Command/_git;hb=HEAD).
+
+ 1. Install this file. Either:
+
+    a. Place it in your .zshrc:
+
+    b. Or, copy it somewhere (e.g. ~/.git-flow-completion.zsh) and put the following line in
+       your .zshrc:
+
+           source ~/.git-flow-completion.zsh
+
+    c. Or, use this file as an oh-my-zsh plugin.
+
 
 The Fine Print
 --------------

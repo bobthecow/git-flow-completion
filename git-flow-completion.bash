@@ -112,7 +112,12 @@ __git_flow_list_features ()
 
 __git_flow_list_remote_features ()
 {
-	git branch -r 2> /dev/null | grep 'origin/feature/' | awk '{ sub(/^origin\/feature\//, "", $1); print }'
+	git branch -r 2> /dev/null | grep "origin/$(__git_flow_feature_prefix)" | awk '{ sub(/^origin\/$(__git_flow_feature_prefix)/, "", $1); print }'
+}
+
+__git_flow_feature_prefix ()
+{
+	git config gitflow.prefix.feature 2> /dev/null || echo "feature/"
 }
 
 __git_flow_release ()

@@ -48,7 +48,7 @@
 _git_flow ()
 {
 	local subcommands="init feature release hotfix"
-	local subcommand="$(__git_find_subcommand "$subcommands")"
+	local subcommand="$(__git_find_on_cmdline "$subcommands")"
 	if [ -z "$subcommand" ]; then
 		__gitcomp "$subcommands"
 		return
@@ -76,7 +76,7 @@ _git_flow ()
 __git_flow_feature ()
 {
 	local subcommands="list start finish publish track diff rebase checkout pull"
-	local subcommand="$(__git_find_subcommand "$subcommands")"
+	local subcommand="$(__git_find_on_cmdline "$subcommands")"
 	if [ -z "$subcommand" ]; then
 		__gitcomp "$subcommands"
 		return
@@ -123,7 +123,7 @@ __git_flow_feature_prefix ()
 __git_flow_release ()
 {
 	local subcommands="list start finish"
-	local subcommand="$(__git_find_subcommand "$subcommands")"
+	local subcommand="$(__git_find_on_cmdline "$subcommands")"
 	if [ -z "$subcommand" ]; then
 		__gitcomp "$subcommands"
 		return
@@ -149,7 +149,7 @@ __git_flow_list_releases ()
 __git_flow_hotfix ()
 {
 	local subcommands="list start finish"
-	local subcommand="$(__git_find_subcommand "$subcommands")"
+	local subcommand="$(__git_find_on_cmdline "$subcommands")"
 	if [ -z "$subcommand" ]; then
 		__gitcomp "$subcommands"
 		return
@@ -171,7 +171,7 @@ __git_flow_list_hotfixes ()
 	git flow hotfix list 2> /dev/null
 }
 
-# temporarily wrap __git_find_on_cmdline() for backwards compatibility
-if [ -z "`type -t __git_find_subcommand`" ]; then
-	alias __git_find_subcommand=__git_find_on_cmdline
+# alias __git_find_on_cmdline for backwards compatibility
+if [ -z "`type -t __git_find_on_cmdline`" ]; then
+	alias __git_find_on_cmdline=__git_find_subcommand
 fi

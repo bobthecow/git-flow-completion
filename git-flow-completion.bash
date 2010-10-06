@@ -107,12 +107,14 @@ __git_flow_feature ()
 
 __git_flow_list_features ()
 {
-	git flow feature list 2> /dev/null | tr -d ' |*'
+	local prefix="$(__git_flow_feature_prefix)"
+	git branch 2> /dev/null | tr -d ' |*' | grep "^$prefix" | sed s,^$prefix,,
 }
 
 __git_flow_list_remote_features ()
 {
-	git branch -r 2> /dev/null | grep "origin/$(__git_flow_feature_prefix)" | awk '{ sub(/^origin\/$(__git_flow_feature_prefix)/, "", $1); print }'
+	local prefix="$(__git_flow_feature_prefix)"
+	git branch -r 2> /dev/null | sed "s/^ *//g" | grep "^origin/$prefix" | sed s,^origin/$prefix,,
 }
 
 __git_flow_feature_prefix ()
@@ -143,7 +145,13 @@ __git_flow_release ()
 
 __git_flow_list_releases ()
 {
-	git flow release list 2> /dev/null
+	local prefix="$(__git_flow_release_prefix)"
+	git branch 2> /dev/null | tr -d ' |*' | grep "^$prefix" | sed s,^$prefix,,
+}
+
+__git_flow_release_prefix ()
+{
+	git config gitflow.prefix.release 2> /dev/null || echo "release/"
 }
 
 __git_flow_hotfix ()

@@ -9,7 +9,7 @@
 # 
 #  * git-flow init and version
 #  * feature, hotfix and release branches
-#  * remote feature branch names (for `git-flow feature track`)
+#  * remote feature, hotfix and release branch names
 # 
 # 
 # Installation
@@ -47,7 +47,7 @@
 
 _git_flow ()
 {
-	local subcommands="init feature release hotfix"
+	local subcommands="init feature release hotfix help"
 	local subcommand="$(__git_find_on_cmdline "$subcommands")"
 	if [ -z "$subcommand" ]; then
 		__gitcomp "$subcommands"
@@ -55,6 +55,10 @@ _git_flow ()
 	fi
 
 	case "$subcommand" in
+	init)
+		__git_flow_init
+		return
+		;;
 	feature)
 		__git_flow_feature
 		return
@@ -73,9 +77,19 @@ _git_flow ()
 	esac
 }
 
+__git_flow_init ()
+{
+	local subcommands="help"
+	local subcommand="$(__git_find_on_cmdline "$subcommands")"
+	if [ -z "$subcommand" ]; then
+		__gitcomp "$subcommands"
+		return
+	fi
+}
+
 __git_flow_feature ()
 {
-	local subcommands="list start finish publish track diff rebase checkout pull"
+	local subcommands="list start finish publish track diff rebase checkout pull help"
 	local subcommand="$(__git_find_on_cmdline "$subcommands")"
 	if [ -z "$subcommand" ]; then
 		__gitcomp "$subcommands"
@@ -124,7 +138,7 @@ __git_flow_feature_prefix ()
 
 __git_flow_release ()
 {
-	local subcommands="list start finish"
+	local subcommands="list start finish help"
 	local subcommand="$(__git_find_on_cmdline "$subcommands")"
 	if [ -z "$subcommand" ]; then
 		__gitcomp "$subcommands"
@@ -156,7 +170,7 @@ __git_flow_release_prefix ()
 
 __git_flow_hotfix ()
 {
-	local subcommands="list start finish"
+	local subcommands="list start finish help"
 	local subcommand="$(__git_find_on_cmdline "$subcommands")"
 	if [ -z "$subcommand" ]; then
 		__gitcomp "$subcommands"

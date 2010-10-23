@@ -9,7 +9,7 @@
 # 
 #  * git-flow init and version
 #  * feature, hotfix and release branches
-#  * remote feature branch names (for `git-flow feature track`)
+#  * remote feature, hotfix and release branch names
 # 
 # 
 # Installation
@@ -47,7 +47,7 @@
 
 _git_flow ()
 {
-	local subcommands="init feature release hotfix"
+	local subcommands="init feature release hotfix help version"
 	local subcommand="$(__git_find_on_cmdline "$subcommands")"
 	if [ -z "$subcommand" ]; then
 		__gitcomp "$subcommands"
@@ -55,6 +55,10 @@ _git_flow ()
 	fi
 
 	case "$subcommand" in
+	init)
+		__git_flow_init
+		return
+		;;
 	feature)
 		__git_flow_feature
 		return
@@ -73,9 +77,19 @@ _git_flow ()
 	esac
 }
 
+__git_flow_init ()
+{
+	local subcommands="help"
+	local subcommand="$(__git_find_on_cmdline "$subcommands")"
+	if [ -z "$subcommand" ]; then
+		__gitcomp "$subcommands"
+		return
+	fi
+}
+
 __git_flow_feature ()
 {
-	local subcommands="list start finish publish track diff rebase checkout pull"
+	local subcommands="list start finish publish track diff rebase checkout pull help"
 	local subcommand="$(__git_find_on_cmdline "$subcommands")"
 	if [ -z "$subcommand" ]; then
 		__gitcomp "$subcommands"
@@ -88,15 +102,15 @@ __git_flow_feature ()
 		return
 		;;
 	checkout|finish|diff|rebase)
-		__gitcomp "$(__git_flow_list_features)"
+		__gitcomp "$(__git_flow_list_branches 'feature')"
 		return
 		;;
 	publish)
-		__gitcomp "$(comm -23 <(__git_flow_list_features) <(__git_flow_list_remote_features))"
+		__gitcomp "$(comm -23 <(__git_flow_list_branches 'feature') <(__git_flow_list_remote_branches 'feature'))"
 		return
 		;;
 	track)
-		__gitcomp "$(__git_flow_list_remote_features)"
+		__gitcomp "$(__git_flow_list_remote_branches 'feature')"
 		return
 		;;
 	*)
@@ -105,26 +119,9 @@ __git_flow_feature ()
 	esac
 }
 
-__git_flow_list_features ()
-{
-	local prefix="$(__git_flow_feature_prefix)"
-	git branch 2> /dev/null | tr -d ' |*' | grep "^$prefix" | sed s,^$prefix,,
-}
-
-__git_flow_list_remote_features ()
-{
-	local prefix="$(__git_flow_feature_prefix)"
-	git branch -r 2> /dev/null | sed "s/^ *//g" | grep "^origin/$prefix" | sed s,^origin/$prefix,,
-}
-
-__git_flow_feature_prefix ()
-{
-	git config gitflow.prefix.feature 2> /dev/null || echo "feature/"
-}
-
 __git_flow_release ()
 {
-	local subcommands="list start finish"
+	local subcommands="list start finish track publish help"
 	local subcommand="$(__git_find_on_cmdline "$subcommands")"
 	if [ -z "$subcommand" ]; then
 		__gitcomp "$subcommands"
@@ -133,7 +130,15 @@ __git_flow_release ()
 	
 	case "$subcommand" in
 	finish)
-		__gitcomp "$(__git_flow_list_releases)"
+		__gitcomp "$(__git_flow_list_branches 'release')"
+		return
+		;;
+	publish)
+		__gitcomp "$(comm -23 <(__git_flow_list_branches 'release') <(__git_flow_list_remote_branches 'release'))"
+		return
+		;;
+	track)
+		__gitcomp "$(__git_flow_list_remote_branches 'release')"
 		return
 		;;
 	*)
@@ -143,20 +148,9 @@ __git_flow_release ()
 
 }
 
-__git_flow_list_releases ()
-{
-	local prefix="$(__git_flow_release_prefix)"
-	git branch 2> /dev/null | tr -d ' |*' | grep "^$prefix" | sed s,^$prefix,,
-}
-
-__git_flow_release_prefix ()
-{
-	git config gitflow.prefix.release 2> /dev/null || echo "release/"
-}
-
 __git_flow_hotfix ()
 {
-	local subcommands="list start finish"
+	local subcommands="list start finish track publish help"
 	local subcommand="$(__git_find_on_cmdline "$subcommands")"
 	if [ -z "$subcommand" ]; then
 		__gitcomp "$subcommands"
@@ -165,7 +159,15 @@ __git_flow_hotfix ()
 
 	case "$subcommand" in
 	finish)
-		__gitcomp "$(__git_flow_list_hotfixes)"
+		__gitcomp "$(__git_flow_list_branches 'hotfix')"
+		return
+		;;
+	publish)
+		__gitcomp "$(comm -23 <(__git_flow_list_branches 'hotfix') <(__git_flow_list_remote_branches 'hotfix'))"
+		return
+		;;
+	track)
+		__gitcomp "$(__git_flow_list_remote_branches 'hotfix')"
 		return
 		;;
 	*)
@@ -174,9 +176,27 @@ __git_flow_hotfix ()
 	esac
 }
 
-__git_flow_list_hotfixes ()
+__git_flow_prefix ()
 {
-	git flow hotfix list 2> /dev/null
+	case "$1" in
+	feature|release|hotfix)
+		git config "gitflow.prefix.$1" 2> /dev/null || echo "$1/"
+		return
+		;;
+	esac
+}
+
+__git_flow_list_branches ()
+{
+	local prefix="$(__git_flow_prefix $1)"
+	git branch 2> /dev/null | tr -d ' |*' | grep "^$prefix" | sed s,^$prefix,,
+}
+
+__git_flow_list_remote_branches ()
+{
+	local prefix="$(__git_flow_prefix $1)"
+	local origin="$(git config gitflow.origin 2> /dev/null || echo "origin")"
+	git branch -r 2> /dev/null | sed "s/^ *//g" | grep "^$origin/$prefix" | sed s,^$origin/$prefix,,
 }
 
 # alias __git_find_on_cmdline for backwards compatibility

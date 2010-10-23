@@ -5,9 +5,9 @@ Bash and Zsh completion support for [git-flow](http://github.com/nvie/gitflow)
 
 The contained completion routines provide support for completing:
 
- * git-flow init, feature, hotfix and release
+ * git-flow init and version
  * feature, hotfix and release branches
- * remote feature branch names (for `git-flow feature track`)
+ * remote feature, hotfix and release branch names
 
 
 Installation for Bash

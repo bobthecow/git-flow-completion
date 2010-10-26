@@ -16,7 +16,8 @@ Installation for Bash
 To achieve git-flow completion nirvana:
 
  0. Install git-completion.
-
+    It /usr/share/git/completion you will find git-completion.bash.
+    It itself contain information of further actions.
  1. Install this file. Either:
 
     a. Place it in a `bash_completion.d` folder:

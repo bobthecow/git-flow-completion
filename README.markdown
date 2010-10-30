@@ -15,7 +15,7 @@ Installation for Bash
 
 To achieve git-flow completion nirvana:
 
- 0. Install git-completion.
+ 0. [Install git-completion](http://github.com/bobthecow/git-flow-completion/wiki/Install-Bash-git-completion).
 
  1. Install this file. Either:
 

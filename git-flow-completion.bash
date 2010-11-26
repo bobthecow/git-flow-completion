@@ -110,7 +110,7 @@ __git_flow_feature ()
 		return
 		;;
 	track)
-		__gitcomp "$(__git_flow_list_remote_branches 'feature')"
+		__gitcomp "$(comm -23 <(__git_flow_list_remote_branches 'feature') <(__git_flow_list_branches 'feature'))"
 		return
 		;;
 	*)
@@ -138,7 +138,7 @@ __git_flow_release ()
 		return
 		;;
 	track)
-		__gitcomp "$(__git_flow_list_remote_branches 'release')"
+		__gitcomp "$(comm -23 <(__git_flow_list_remote_branches 'release') <(__git_flow_list_branches 'release'))"
 		return
 		;;
 	*)

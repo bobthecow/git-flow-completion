@@ -188,9 +188,9 @@ __git-flow-feature ()
 		
 			local -a subcommands
 			subcommands=(
-				'start:Start a new hotfix branch'
-				'finish:Finish a hotfix branche.'
-				'list:List all your hotfix branches. (Alias to `git flow hotfix`)'
+				'start:Start a new feature branch'
+				'finish:Finish a feature branche.'
+				'list:List all your feature branches. (Alias to `git flow feature`)'
 				'publish: public'
 				'track: track'
 				'diff: diff'
@@ -198,7 +198,7 @@ __git-flow-feature ()
 				'checkout: checkout'
 				'pull: pull'
 			)
-			_describe -t commands 'git flow hotfix' subcommands
+			_describe -t commands 'git flow feature' subcommands
 			_arguments \
     			-v'[Verbose (more) output]'
 		;;

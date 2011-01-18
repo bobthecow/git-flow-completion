@@ -85,8 +85,8 @@ __git-flow-release ()
 		
 			local -a subcommands
 			subcommands=(
-				'start:Start a new release branch'
-				'finish:Finish a release branche.'
+				'start:Start a new release branch.'
+				'finish:Finish a release branch.'
 				'list:List all your release branches. (Alias to `git flow release`)'
 			)
 			_describe -t commands 'git flow release' subcommands
@@ -136,8 +136,8 @@ __git-flow-hotfix ()
 		
 			local -a subcommands
 			subcommands=(
-				'start:Start a new hotfix branch'
-				'finish:Finish a hotfix branche.'
+				'start:Start a new hotfix branch.'
+				'finish:Finish a hotfix branch.'
 				'list:List all your hotfix branches. (Alias to `git flow hotfix`)'
 			)
 			_describe -t commands 'git flow hotfix' subcommands
@@ -188,8 +188,8 @@ __git-flow-feature ()
 		
 			local -a subcommands
 			subcommands=(
-				'start:Start a new feature branch'
-				'finish:Finish a feature branche.'
+				'start:Start a new feature branch.'
+				'finish:Finish a feature branch.'
 				'list:List all your feature branches. (Alias to `git flow feature`)'
 				'publish: public'
 				'track: track'

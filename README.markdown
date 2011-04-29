@@ -59,6 +59,6 @@ To achieve git-flow completion nirvana:
 The Fine Print
 --------------
 
-Copyright (c) 2010 [Justin Hileman](http://justinhileman.com)
+Copyright (c) 2011 [Justin Hileman](http://justinhileman.com)
 
 Distributed under the [MIT License](http://creativecommons.org/licenses/MIT/)

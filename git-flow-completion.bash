@@ -181,14 +181,14 @@ __git_flow_prefix ()
 __git_flow_list_branches ()
 {
 	local prefix="$(__git_flow_prefix $1)"
-	git branch 2> /dev/null | tr -d ' |*' | grep "^$prefix" | sed s,^$prefix,,
+	git branch 2> /dev/null | tr -d ' |*' | grep "^$prefix" | sed s,^$prefix,, | sort
 }
 
 __git_flow_list_remote_branches ()
 {
 	local prefix="$(__git_flow_prefix $1)"
 	local origin="$(git config gitflow.origin 2> /dev/null || echo "origin")"
-	git branch -r 2> /dev/null | sed "s/^ *//g" | grep "^$origin/$prefix" | sed s,^$origin/$prefix,,
+	git branch -r 2> /dev/null | sed "s/^ *//g" | grep "^$origin/$prefix" | sed s,^$origin/$prefix,, | sort
 }
 
 # alias __git_find_on_cmdline for backwards compatibility

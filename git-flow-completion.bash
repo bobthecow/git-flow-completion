@@ -2,52 +2,52 @@
 #
 # git-flow-completion
 # ===================
-# 
+#
 # Bash completion support for [git-flow](http://github.com/nvie/gitflow)
-# 
+#
 # The contained completion routines provide support for completing:
-# 
+#
 #  * git-flow init and version
 #  * feature, hotfix and release branches
 #  * remote feature, hotfix and release branch names
-# 
-# 
+#
+#
 # Installation
 # ------------
-# 
+#
 # To achieve git-flow completion nirvana:
-# 
+#
 #  0. Install git-completion.
-# 
+#
 #  1. Install this file. Either:
-# 
+#
 #     a. Place it in a `bash-completion.d` folder:
-# 
+#
 #        * /etc/bash-completion.d
 #        * /usr/local/etc/bash-completion.d
 #        * ~/bash-completion.d
-# 
+#
 #     b. Or, copy it somewhere (e.g. ~/.git-flow-completion.sh) and put the following line in
 #        your .bashrc:
-# 
+#
 #            source ~/.git-flow-completion.sh
-# 
+#
 #  2. If you are using Git < 1.7.1: Edit git-completion.sh and add the following line to the giant
 #     $command case in _git:
-# 
+#
 #         flow)        _git_flow ;;
-# 
-# 
+#
+#
 # The Fine Print
 # --------------
-# 
+#
 # Copyright (c) 2011 [Justin Hileman](http://justinhileman.com)
-# 
+#
 # Distributed under the [MIT License](http://creativecommons.org/licenses/MIT/)
 
 _git_flow ()
 {
-	local subcommands="init feature release hotfix help version"
+	local subcommands="init feature release hotfix tag help version"
 	local subcommand="$(__git_find_on_cmdline "$subcommands")"
 	if [ -z "$subcommand" ]; then
 		__gitcomp "$subcommands"
@@ -69,6 +69,10 @@ _git_flow ()
 		;;
 	hotfix)
 		__git_flow_hotfix
+		return
+		;;
+	tag)
+		__git_flow_tag
 		return
 		;;
 	*)
@@ -127,7 +131,7 @@ __git_flow_release ()
 		__gitcomp "$subcommands"
 		return
 	fi
-	
+
 	case "$subcommand" in
 	finish)
 		__gitcomp "$(__git_flow_list_branches 'release')"
@@ -162,6 +166,22 @@ __git_flow_hotfix ()
 		__gitcomp "$(__git_flow_list_branches 'hotfix')"
 		return
 		;;
+	*)
+		COMPREPLY=()
+		;;
+	esac
+}
+
+__git_flow_tag ()
+{
+	local subcommands="help"
+	local subcommand="$(__git_find_on_cmdline "$subcommands")"
+	if [ -z "$subcommand" ]; then
+		__gitcomp "$subcommands"
+		return
+	fi
+
+	case "$subcommand" in
 	*)
 		COMPREPLY=()
 		;;

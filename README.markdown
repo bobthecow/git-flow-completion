@@ -30,6 +30,14 @@ To achieve git-flow completion nirvana:
 
            source ~/.git-flow-completion.sh
 
+	c. For Mac OS users, add the following lines to file `.profile` in your home directory:
+	   
+		   if [ -f /Users/bogdanovichiy/Projects/git-flow-completion/git-flow-completion.bash ]; then
+		     . /Users/bogdanovichiy/Projects/git-flow-completion/git-flow-completion.bash
+		   fi
+	   
+	   And restart shell.
+
  2. If you are using Git < 1.7.1: Edit git-completion.sh and add the following line to the giant
     $command case in _git:
 

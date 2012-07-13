@@ -30,10 +30,17 @@ To achieve git-flow completion nirvana:
 
            source ~/.git-flow-completion.sh
 
- 2. If you are using Git < 1.7.1: Edit git-completion.sh and add the following line to the giant
-    $command case in _git:
+ 2. If you are using Git < 1.7.1 you have to edit `/etc/bash_completion.d/git` (or `git-completion.sh`) and add the following line in `_git` function:
 
-        flow)        _git_flow ;;
+        _git ()
+        {
+                [...]
+                case "$command" in
+                   [...]
+                   flow)        _git_flow ;;		
+                   *)           COMPREPLY=() ;;
+                esac
+        }
 
 
 Installation for Zsh

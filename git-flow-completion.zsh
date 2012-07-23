@@ -88,6 +88,8 @@ __git-flow-release ()
 				'start:Start a new release branch.'
 				'finish:Finish a release branch.'
 				'list:List all your release branches. (Alias to `git flow release`)'
+				'publish:Publish release branch to remote.'
+				'track:Track remote release branch.'
 			)
 			_describe -t commands 'git flow release' subcommands
 			_arguments \
@@ -110,6 +112,16 @@ __git-flow-release ()
 						-u'[Use the given GPG-key for the digital signature (implies -s)]'\
 						-m'[Use the given tag message]'\
 						-p'[Push to $ORIGIN after performing finish]'\
+						':version:__git_flow_version_list'
+				;;
+
+				(publish)
+					_arguments \
+						':version:__git_flow_version_list'
+				;;
+
+				(track)
+					_arguments \
 						':version:__git_flow_version_list'
 				;;
 

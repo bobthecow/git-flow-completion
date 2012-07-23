@@ -89,7 +89,7 @@ __git-flow-release ()
 				'finish:Finish a release branch.'
 				'list:List all your release branches. (Alias to `git flow release`)'
 				'publish:Publish release branch to remote.'
-				'track:Track remote release branch.'
+				'track:Checkout remote release branch.'
 			)
 			_describe -t commands 'git flow release' subcommands
 			_arguments \
@@ -203,12 +203,12 @@ __git-flow-feature ()
 				'start:Start a new feature branch.'
 				'finish:Finish a feature branch.'
 				'list:List all your feature branches. (Alias to `git flow feature`)'
-				'publish: public'
-				'track: track'
-				'diff: diff'
-				'rebase: rebase'
-				'checkout: checkout'
-				'pull: pull'
+				'publish:Publish feature branch to remote.'
+				'track:Checkout remote feature branch.'
+				'diff:Show all changes.'
+				'rebase:Rebase from integration branch.'
+				'checkout:Checkout local feature branch.'
+				'pull:Pull changes from remote.'
 			)
 			_describe -t commands 'git flow feature' subcommands
 			_arguments \

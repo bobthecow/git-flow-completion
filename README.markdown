@@ -1,7 +1,7 @@
 git-flow-completion
 ===================
 
-Bash and Zsh completion support for [git-flow](http://github.com/nvie/gitflow)
+Bash, Zsh and fish completion support for [git-flow](http://github.com/nvie/gitflow).
 
 The contained completion routines provide support for completing:
 
@@ -17,23 +17,28 @@ To achieve git-flow completion nirvana:
 
  0. [Install git-completion](http://github.com/bobthecow/git-flow-completion/wiki/Install-Bash-git-completion).
 
- 1. Install this file. Either:
+ 1. Install `git-flow-completion.bash`. Either:
 
-    a. Place it in a `bash_completion.d` folder:
+    1. Place it in your `bash_completion.d` folder, usually something like `/etc/bash_completion.d`,
+       `/usr/local/etc/bash_completion.d` or `~/bash_completion.d`.
 
-       * /etc/bash_completion.d
-       * /usr/local/etc/bash_completion.d
-       * ~/bash_completion.d
+    2. Or, copy it somewhere (e.g. `~/.git-flow-completion.sh`) and put the following line in the `.profile` or
+       `.bashrc` file in your home directory:
 
-    b. Or, copy it somewhere (e.g. ~/.git-flow-completion.sh) and put the following line in
-       your .bashrc:
+            source ~/.git-flow-completion.sh
 
-           source ~/.git-flow-completion.sh
+ 2. If you are using Git < 1.7.1, you will need to edit git completion (usually `/etc/bash_completion.d/git` or
+    `git-completion.sh`) and add the following line to the `$command` case in `_git`:
 
- 2. If you are using Git < 1.7.1: Edit git-completion.sh and add the following line to the giant
-    $command case in _git:
-
-        flow)        _git_flow ;;
+        _git ()
+        {
+                [...]
+                case "$command" in
+                   [...]
+                   flow)        _git_flow ;;		
+                   *)           COMPREPLY=() ;;
+                esac
+        }
 
 
 Installation for Zsh
@@ -44,16 +49,24 @@ To achieve git-flow completion nirvana:
  0. Update your zsh's git-completion module to the newest verion --
     [available here](http://zsh.git.sourceforge.net/git/gitweb.cgi?p=zsh/zsh;a=blob_plain;f=Completion/Unix/Command/_git;hb=HEAD).
 
- 1. Install this file. Either:
+ 1. Install `git-flow-completion.zsh`. Either:
 
-    a. Place it in your .zshrc:
+    1. Place it in your `.zshrc`.
 
-    b. Or, copy it somewhere (e.g. ~/.git-flow-completion.zsh) and put the following line in
-       your .zshrc:
+    2. Or, copy it somewhere (e.g. `~/.git-flow-completion.zsh`) and put the following line in
+       your `.zshrc`:
 
-           source ~/.git-flow-completion.zsh
+            source ~/.git-flow-completion.zsh
 
-    c. Or, use this file as an oh-my-zsh plugin.
+    3. Or, use this file as an oh-my-zsh plugin.
+
+
+Installation for fish
+---------------------
+
+To achieve git-flow completion nirvana:
+
+ 1. Install `git.fish` in your `~/.config/fish/completions` folder.
 
 
 The Fine Print

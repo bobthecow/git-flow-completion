@@ -25,8 +25,8 @@ To achieve git-flow completion nirvana:
        * /usr/local/etc/bash_completion.d
        * ~/bash_completion.d
 
-    b. Or, copy it somewhere (e.g. ~/.git-flow-completion.sh) and put the following line in
-       your .bashrc:
+    b. Or, copy it somewhere (e.g. `~/.git-flow-completion.sh`) and put the following line in the `.profile` or
+       `.bashrc` file in your home directory:
 
            source ~/.git-flow-completion.sh
 

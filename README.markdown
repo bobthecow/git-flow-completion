@@ -30,7 +30,8 @@ To achieve git-flow completion nirvana:
 
            source ~/.git-flow-completion.sh
 
- 2. If you are using Git < 1.7.1 you have to edit `/etc/bash_completion.d/git` (or `git-completion.sh`) and add the following line in `_git` function:
+ 2. If you are using Git < 1.7.1, you will need to edit git completion (usually `/etc/bash_completion.d/git` or
+    `git-completion.sh`) and add the following line to the `$command` case in `_git`:
 
         _git ()
         {

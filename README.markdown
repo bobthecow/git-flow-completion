@@ -1,7 +1,7 @@
 git-flow-completion
 ===================
 
-Bash and Zsh completion support for [git-flow](http://github.com/nvie/gitflow).
+Bash, Zsh and fish completion support for [git-flow](http://github.com/nvie/gitflow).
 
 The contained completion routines provide support for completing:
 
@@ -17,7 +17,7 @@ To achieve git-flow completion nirvana:
 
  0. [Install git-completion](http://github.com/bobthecow/git-flow-completion/wiki/Install-Bash-git-completion).
 
- 1. Install this file. Either:
+ 1. Install `git-flow-completion.bash`. Either:
 
     1. Place it in your `bash_completion.d` folder, usually something like `/etc/bash_completion.d`,
        `/usr/local/etc/bash_completion.d` or `~/bash_completion.d`.
@@ -49,16 +49,24 @@ To achieve git-flow completion nirvana:
  0. Update your zsh's git-completion module to the newest verion --
     [available here](http://zsh.git.sourceforge.net/git/gitweb.cgi?p=zsh/zsh;a=blob_plain;f=Completion/Unix/Command/_git;hb=HEAD).
 
- 1. Install this file. Either:
+ 1. Install `git-flow-completion.zsh`. Either:
 
-    1. Place it in your .zshrc:
+    1. Place it in your `.zshrc`.
 
     2. Or, copy it somewhere (e.g. `~/.git-flow-completion.zsh`) and put the following line in
-       your .zshrc:
+       your `.zshrc`:
 
             source ~/.git-flow-completion.zsh
 
     3. Or, use this file as an oh-my-zsh plugin.
+
+
+Installation for fish
+---------------------
+
+To achieve git-flow completion nirvana:
+
+ 1. Install `git.fish` in your `~/.config/fish/completions` folder.
 
 
 The Fine Print

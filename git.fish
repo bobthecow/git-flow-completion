@@ -17,10 +17,7 @@
 #
 # To achieve git-flow completion nirvana:
 #
-#  1. Install this file it in your `~/.config/fish/completions` folder.
-#
-#  2. (If your shared fish completions aren't in `/usr/share/...` or `/usr/local/share/...`)
-#     Edit the first line
+#  1. Install this file in your `~/.config/fish/completions` folder.
 #
 #
 # The Fine Print

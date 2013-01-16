@@ -22,10 +22,10 @@ To achieve git-flow completion nirvana:
     1. Place it in your `bash_completion.d` folder, usually something like `/etc/bash_completion.d`,
        `/usr/local/etc/bash_completion.d` or `~/bash_completion.d`.
 
-    2. Or, copy it somewhere (e.g. `~/.git-flow-completion.bash`) and put the following line in the `.profile` or
+    2. Or, copy it somewhere (e.g. `~/git-flow-completion.bash`) and put the following line in the `.profile` or
        `.bashrc` file in your home directory:
 
-            source ~/.git-flow-completion.bash
+            source ~/git-flow-completion.bash
 
  2. If you are using Git < 1.7.1, you will need to edit git completion (usually `/etc/bash_completion.d/git` or
     `git-completion.sh`) and add the following line to the `$command` case in `_git`:

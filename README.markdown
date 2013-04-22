@@ -47,7 +47,7 @@ Installation for Zsh
 To achieve git-flow completion nirvana:
 
  0. Update your zsh's git-completion module to the newest version --
-    [available here](http://sourceforge.net/p/zsh/code/ci/master/tree/Completion/Unix/Command/_git). Optinal if you have an up-to-date version of zsh.
+    [available here](http://sourceforge.net/p/zsh/code/ci/master/tree/Completion/Unix/Command/_git). Optional if you have an up-to-date version of zsh.
 
  1. Install `git-flow-completion.zsh`. Either:
 

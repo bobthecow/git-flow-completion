@@ -40,9 +40,9 @@
 # 
 # The Fine Print
 # --------------
-# 
-# Copyright (c) 2011 [Justin Hileman](http://justinhileman.com)
-# 
+#
+# Copyright (c) 2010-2014 [Justin Hileman](http://justinhileman.com)
+#
 # Distributed under the [MIT License](http://creativecommons.org/licenses/MIT/)
 
 _git_flow ()

@@ -59,7 +59,29 @@ To achieve git-flow completion nirvana:
             source ~/.git-flow-completion.zsh
 
     3. Or, use this file as an oh-my-zsh plugin.
-
+ 
+         1. Install the plugin by cloning this repository to your directory for [custom oh-my-zsh plugins](https://github.com/robbyrussell/oh-my-zsh#customization):
+         
+         `git clone https://github.com/bobthecow/git-flow-completion ~/.oh-my-zsh/custom/plugins/git-flow-completion`
+         
+         After doing that, your file tree ought to look like this:
+         
+         ![](https://cloud.githubusercontent.com/assets/2547625/3866984/2f28fc4c-1feb-11e4-8c37-79627d655000.png)
+         
+         2. Turn the plugin on by updating your zsh configuration file, `~/.zshrc`
+         
+             1. `open ~/.zshrc`
+             2. Find the plugins section. It'll look like this:
+             
+                     # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+                     # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+                     # Example format: plugins=(rails git textmate ruby lighthouse)
+                     plugins=(<some-plugin> <another-plugin> <third-plgun>)
+             
+             3. Add `git-flow-completion` to the list of plugins within the parentheses.
+             4. Save
+         
+         3. Reload Terminal
 
 Installation for fish
 ---------------------

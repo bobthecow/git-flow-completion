@@ -76,7 +76,7 @@ To achieve git-flow completion nirvana:
                      # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
                      # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
                      # Example format: plugins=(rails git textmate ruby lighthouse)
-                     plugins=(<some-plugin> <another-plugin> <third-plgun>)
+                     plugins=(<some-plugin> <another-plugin> <third-plugin>)
              
              3. Add `git-flow-completion` to the list of plugins within the parentheses.
              4. Save

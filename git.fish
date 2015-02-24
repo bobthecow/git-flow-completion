@@ -23,7 +23,7 @@
 # The Fine Print
 # --------------
 #
-# Copyright (c) 2012-2014 [Justin Hileman](http://justinhileman.com)
+# Copyright (c) 2012-2015 [Justin Hileman](http://justinhileman.com)
 #
 # Distributed under the [MIT License](http://creativecommons.org/licenses/MIT/)
 

@@ -23,7 +23,7 @@
 # The Fine Print
 # --------------
 #
-# Copyright (c) 2012 [Justin Hileman](http://justinhileman.com)
+# Copyright (c) 2012-2015 [Justin Hileman](http://justinhileman.com)
 #
 # Distributed under the [MIT License](http://creativecommons.org/licenses/MIT/)
 
@@ -61,13 +61,13 @@ end
 
 function __fish_git_flow_branches
   set prefix (__fish_git_flow_prefix $argv[1])
-  __fish_git_branches | grep "^$prefix" | sed "s,^$prefix,," | sort
+  __fish_git_branches | grep --color=never "^$prefix" | sed "s,^$prefix,," | sort
 end
 
 function __fish_git_flow_remote_branches
   set prefix (__fish_git_flow_prefix $argv[1])
   set origin (git config gitflow.origin 2> /dev/null; or echo "origin")
-  git branch -r 2> /dev/null | sed "s/^ *//g" | grep "^$origin/$prefix" | sed "s,^$origin/$prefix,," | sort
+  git branch -r 2> /dev/null | sed "s/^ *//g" | grep --color=never "^$origin/$prefix" | sed "s,^$origin/$prefix,," | sort
 end
 
 function __fish_git_flow_untracked_branches

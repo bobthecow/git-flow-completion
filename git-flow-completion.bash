@@ -2,47 +2,47 @@
 #
 # git-flow-completion
 # ===================
-# 
+#
 # Bash completion support for [git-flow](http://github.com/nvie/gitflow)
-# 
+#
 # The contained completion routines provide support for completing:
-# 
+#
 #  * git-flow init and version
 #  * feature, hotfix and release branches
 #  * remote feature, hotfix and release branch names
-# 
-# 
+#
+#
 # Installation
 # ------------
-# 
+#
 # To achieve git-flow completion nirvana:
-# 
+#
 #  0. Install git-completion.
-# 
+#
 #  1. Install this file. Either:
-# 
+#
 #     a. Place it in a `bash-completion.d` folder:
-# 
+#
 #        * /etc/bash-completion.d
 #        * /usr/local/etc/bash-completion.d
 #        * ~/bash-completion.d
-# 
+#
 #     b. Or, copy it somewhere (e.g. ~/.git-flow-completion.sh) and put the following line in
 #        your .bashrc:
-# 
+#
 #            source ~/.git-flow-completion.sh
-# 
+#
 #  2. If you are using Git < 1.7.1: Edit git-completion.sh and add the following line to the giant
 #     $command case in _git:
-# 
+#
 #         flow)        _git_flow ;;
-# 
-# 
+#
+#
 # The Fine Print
 # --------------
-# 
-# Copyright (c) 2011 [Justin Hileman](http://justinhileman.com)
-# 
+#
+# Copyright (c) 2010-2015 [Justin Hileman](http://justinhileman.com)
+#
 # Distributed under the [MIT License](http://creativecommons.org/licenses/MIT/)
 
 _git_flow ()
@@ -131,7 +131,7 @@ __git_flow_release ()
 		__gitcomp "$subcommands"
 		return
 	fi
-	
+
 	case "$subcommand" in
 	finish)
 		__gitcomp "$(__git_flow_list_branches 'release')"
@@ -209,14 +209,14 @@ __git_flow_prefix ()
 __git_flow_list_branches ()
 {
 	local prefix="$(__git_flow_prefix $1)"
-	git branch --no-color 2> /dev/null | tr -d ' |*' | grep "^$prefix" | sed s,^$prefix,, | sort
+	git branch --no-color 2> /dev/null | tr -d ' |*' | grep --color=never "^$prefix" | sed s,^$prefix,, | sort
 }
 
 __git_flow_list_remote_branches ()
 {
 	local prefix="$(__git_flow_prefix $1)"
 	local origin="$(git config gitflow.origin 2> /dev/null || echo "origin")"
-	git branch --no-color -r 2> /dev/null | sed "s/^ *//g" | grep "^$origin/$prefix" | sed s,^$origin/$prefix,, | sort
+	git branch --no-color -r 2> /dev/null | sed "s/^ *//g" | grep --color=never "^$origin/$prefix" | sed s,^$origin/$prefix,, | sort
 }
 
 # alias __git_find_on_cmdline for backwards compatibility

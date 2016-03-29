@@ -8,8 +8,8 @@
 # The contained completion routines provide support for completing:
 #
 #  * git-flow init and version
-#  * feature, hotfix and release branches
-#  * remote feature, hotfix and release branch names
+#  * feature, bugfix, hotfix and release branches
+#  * remote feature, bugfix, hotfix and release branch names
 #
 #
 # Installation
@@ -137,6 +137,39 @@ complete -f -c git -n '__fish_git_flow_using_command feature pull' -a '(__fish_g
 
 
 
+## git-flow bugfix
+
+complete -f -c git -n '__fish_git_flow_using_command' -a bugfix      -d 'Manage bugfix branches'
+complete -f -c git -n '__fish_git_flow_using_command bugfix' -a list -d 'List bugfix branches'
+complete -f -c git -n '__fish_git_flow_using_command bugfix' -s v    -d 'Verbose output'
+
+complete -f -c git -n '__fish_git_flow_using_command bugfix' -a start    -d 'Start a new bugfix branch'
+complete -f -c git -n '__fish_git_flow_using_command bugfix start' -s F  -d 'Fetch from origin first'
+
+complete -f -c git -n '__fish_git_flow_using_command bugfix' -a finish   -d 'Finish a bugfix branch'
+complete -f -c git -n '__fish_git_flow_using_command bugfix finish' -s F -d 'Fetch from origin first'
+complete -f -c git -n '__fish_git_flow_using_command bugfix finish' -s r -d 'Rebase instead of merging'
+complete -f -c git -n '__fish_git_flow_using_command bugfix finish' -a '(__fish_git_flow_branches bugfix)' -d 'Bugfix branch'
+
+complete -f -c git -n '__fish_git_flow_using_command bugfix' -a publish  -d 'Publish a bugfix branch to remote'
+complete -f -c git -n '__fish_git_flow_using_command bugfix publish' -a '(__fish_git_flow_unpublished_branches bugfix)' -d 'Bugfix branch'
+
+complete -f -c git -n '__fish_git_flow_using_command bugfix' -a track    -d 'Checkout remote bugfix branch'
+complete -f -c git -n '__fish_git_flow_using_command bugfix track' -a '(__fish_git_flow_untracked_branches bugfix)' -d 'Bugfix branch'
+
+complete -f -c git -n '__fish_git_flow_using_command bugfix' -a diff     -d 'Show all changes'
+
+complete -f -c git -n '__fish_git_flow_using_command bugfix' -a rebase   -d 'Rebase against integration branch'
+complete -f -c git -n '__fish_git_flow_using_command bugfix rebase' -s i -d 'Do an interactive rebase'
+
+complete -f -c git -n '__fish_git_flow_using_command bugfix' -a checkout -d 'Checkout local bugfix branch'
+complete -f -c git -n '__fish_git_flow_using_command bugfix checkout' -a '(__fish_git_flow_branches bugfix)' -d 'Bugfix branch'
+
+complete -f -c git -n '__fish_git_flow_using_command bugfix' -a pull     -d 'Pull changes from remote'
+complete -f -c git -n '__fish_git_flow_using_command bugfix pull' -a '(__fish_git_remotes)' -d 'Remote'
+
+
+
 ## git-flow release
 
 complete -f -c git -n '__fish_git_flow_using_command' -a release      -d 'Manage release branches'
@@ -189,4 +222,3 @@ complete -f -c git -n '__fish_git_flow_using_command support' -s v    -d 'Verbos
 
 complete -f -c git -n '__fish_git_flow_using_command support' -a start -d 'Start a new support branch'
 complete -f -c git -n '__fish_git_flow_using_command support start' -s F  -d 'Fetch from origin first'
-

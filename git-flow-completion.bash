@@ -8,8 +8,8 @@
 # The contained completion routines provide support for completing:
 #
 #  * git-flow init and version
-#  * feature, hotfix and release branches
-#  * remote feature, hotfix and release branch names
+#  * feature, bugfix, hotfix and release branches
+#  * remote feature, bugfix, hotfix and release branch names
 #
 #
 # Installation
@@ -47,7 +47,7 @@
 
 _git_flow ()
 {
-	local subcommands="init feature release hotfix support help version"
+	local subcommands="init feature bugfix release hotfix support help version"
 	local subcommand="$(__git_find_on_cmdline "$subcommands")"
 	if [ -z "$subcommand" ]; then
 		__gitcomp "$subcommands"
@@ -61,6 +61,10 @@ _git_flow ()
 		;;
 	feature)
 		__git_flow_feature
+		return
+		;;
+	bugfix)
+		__git_flow_bugfix
 		return
 		;;
 	release)
@@ -115,6 +119,38 @@ __git_flow_feature ()
 		;;
 	track)
 		__gitcomp "$(comm -23 <(__git_flow_list_remote_branches 'feature') <(__git_flow_list_branches 'feature'))"
+		return
+		;;
+	*)
+		COMPREPLY=()
+		;;
+	esac
+}
+
+__git_flow_bugfix ()
+{
+	local subcommands="list start finish publish track diff rebase checkout pull help"
+	local subcommand="$(__git_find_on_cmdline "$subcommands")"
+	if [ -z "$subcommand" ]; then
+		__gitcomp "$subcommands"
+		return
+	fi
+
+	case "$subcommand" in
+	pull)
+		__gitcomp "$(__git_remotes)"
+		return
+		;;
+	checkout|finish|diff|rebase)
+		__gitcomp "$(__git_flow_list_branches 'bugfix')"
+		return
+		;;
+	publish)
+		__gitcomp "$(comm -23 <(__git_flow_list_branches 'bugfix') <(__git_flow_list_remote_branches 'bugfix'))"
+		return
+		;;
+	track)
+		__gitcomp "$(comm -23 <(__git_flow_list_remote_branches 'bugfix') <(__git_flow_list_branches 'bugfix'))"
 		return
 		;;
 	*)

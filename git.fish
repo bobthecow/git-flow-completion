@@ -22,7 +22,10 @@
 #
 # The Fine Print
 # --------------
+# Author:
+# Copyright (c) 2021 Sourajyoti Basak
 #
+# Original Author:
 # Copyright (c) 2012-2015 [Justin Hileman](http://justinhileman.com)
 #
 # Distributed under the [MIT License](http://creativecommons.org/licenses/MIT/)

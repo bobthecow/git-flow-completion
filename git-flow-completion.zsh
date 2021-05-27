@@ -19,6 +19,14 @@
 #
 #     c. Or, use this file as a oh-my-zsh plugin.
 #
+#
+# The Fine Print
+# --------------
+# Author:
+# Copyright (c) 2021 Sourajyoti Basak
+#
+# Original Author:
+# Copyright not mentioned
 
 _git-flow ()
 {

@@ -9,6 +9,14 @@ The contained completion routines provide support for completing:
  * feature, hotfix and release branches
  * remote feature, hotfix and release branch names
 
+Installation with Fig
+---------------------
+
+[Fig](https://fig.io) adds apps, shortcuts, and autocomplete to your existing terminal.
+
+Install `git-flow-completion` for Bash, Zsh, or Fish with just one click.
+
+<a href="https://fig.io/plugins/other/git-flow-completion" target="_blank"><img src="https://fig.io/badges/install-with-fig.svg" /></a>
 
 Installation for Bash
 ---------------------
